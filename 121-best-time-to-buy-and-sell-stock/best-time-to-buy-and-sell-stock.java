@@ -4,16 +4,14 @@ class Solution {
             return 0;
         }
 
-        int buy = 0;
-        int sell = 1;
+        int buy = Integer.MAX_VALUE;
         int profit = 0;
-        while(sell< prices.length){
-           if(prices[buy]<prices[sell]){
-                profit = Math.max(profit, prices[sell] - prices[buy]);
+        for(int price : prices){
+           if(price < buy){
+                buy = price;
             }else{
-                buy = sell;
+                profit = Math.max(profit, price - buy);
             }
-            sell++;
         }
         return profit;
        } 
